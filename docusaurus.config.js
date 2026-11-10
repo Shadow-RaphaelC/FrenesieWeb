@@ -46,26 +46,9 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          routeBasePath: 'wiki',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -77,28 +60,21 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'My Site',
+        title: 'Frénésie',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Frénésie Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'wikiSidebar',
             position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
+            label: 'Personnages',
           },
         ],
       },
@@ -106,46 +82,35 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Raphaël Couturier',
             items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
+              {label: 'Courriel', href: 'mailto:raphc.official.business@gmail.com'},
+              {label: 'GitHub', href: 'https://github.com/Shadow-RaphaelC'},
             ],
           },
           {
-            title: 'Community',
+            title: 'Vincent Lévesque',
             items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
+              {label: 'Courriel', href: 'mailto:levvin2@outlook.fr'},
+              {label: 'GitHub', href: 'https://github.com/vincentLevesque2'},
             ],
           },
           {
-            title: 'More',
+            title: 'Mathis Teixeira',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
+              {label: 'Courriel', href: 'mailto:mathis.teixeira44@gmail.com'},
+              {label: 'GitHub', href: 'https://github.com/4EverMT'},
+            ],
+          },
+          {
+            title: 'Goufril Mardini',
+            items: [
+              {label: 'Courriel', href: 'mailto:EMAIL_GOUFRIL'},
+              {label: 'GitHub', href: 'https://github.com/GITHUB_GOUFRIL'},
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} Équipe Frénésie · Collège Lionel-Groulx`,
       },
       prism: {
         theme: prismThemes.github,
