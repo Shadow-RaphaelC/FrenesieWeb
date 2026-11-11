@@ -13,6 +13,20 @@ const config = {
   title: 'Frénésie',
   tagline: 'Party-fighter PvP multijoueur',
   favicon: 'img/favicon.ico',
+  headTags: [
+  {
+    tagName: 'link',
+    attributes: { rel: 'apple-touch-icon', href: '/FrenesieWeb/img/apple-touch-icon.png' },
+  },
+  {
+    tagName: 'link',
+    attributes: { rel: 'manifest', href: '/FrenesieWeb/img/site.webmanifest' },
+  },
+  {
+    tagName: 'meta',
+    attributes: { name: 'theme-color', content: '#D9A33A' },
+  },
+],
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -66,17 +80,44 @@ const config = {
       navbar: {
         title: 'Frénésie',
         logo: {
-          alt: 'Frénésie Logo',
-          src: 'img/logo.svg',
+          alt: 'Frénésie',
+          src: 'img/logo_transparent.png',
+          srcDark: 'img/pfp_amber_256.png',
         },
         items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'wikiSidebar',
-            position: 'left',
-            label: 'Personnages',
-          },
-        ],
+        {
+          type: 'dropdown',
+          label: 'Accueil',
+          to: '/',
+          position: 'left',
+          items: [
+            { label: 'À propos', to: '/#a-propos' },
+            { label: 'Comment jouer', to: '/#comment-jouer' },
+            { label: "L'équipe", to: '/#equipe' },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Personnages',
+          position: 'left',
+          items: [
+            { type: 'doc', docId: 'personnages/umbris', label: 'Umbris' },
+            { type: 'doc', docId: 'personnages/fleur-de-lys', label: 'Fleur-de-Lys' },
+            { type: 'doc', docId: 'personnages/lee-mao', label: 'Lee Mao' },
+            { type: 'doc', docId: 'personnages/melodieuzze', label: 'Mélodieuzze' },
+          ],
+        },
+        {
+          type: 'dropdown',
+          label: 'Profil',
+          to: '/profil',
+          position: 'left',
+          items: [
+            { label: 'Connexion', to: '/profil/connexion' },
+            { label: 'Inscription', to: '/profil/inscription' },
+          ],
+        },
+      ],
       },
       footer: {
         style: 'dark',
@@ -105,8 +146,8 @@ const config = {
           {
             title: 'Goufril Mardini',
             items: [
-              {label: 'Courriel', href: 'mailto:EMAIL_GOUFRIL'},
-              {label: 'GitHub', href: 'https://github.com/GITHUB_GOUFRIL'},
+              {label: 'Courriel', href: 'mailto:goufril.mardini.dev@gmail.com'},
+              {label: 'GitHub', href: 'https://github.com/goufff'},
             ],
           },
         ],

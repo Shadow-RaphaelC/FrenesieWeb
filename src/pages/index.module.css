@@ -1,6 +1,81 @@
 .hero {
-  padding: 5rem 0;
+  position: relative;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  color: #fff;
+  overflow: hidden;
+  background: #0c0a0d;
+}
+
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(12, 10, 13, 0.55);
+}
+
+.heroOverlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(122vmin, 1050px);
+  height: min(122vmin, 1050px);
+  border-radius: 50%;
+  background: conic-gradient(
+    from -45deg,
+    rgba(184, 29, 42, 0.85),   /* rouge  - Umbris (haut-gauche) */
+    rgba(47, 107, 31, 0.85),   /* vert   - Mélodieuzze (haut-droite) */
+    rgba(47, 95, 208, 0.85),   /* bleu   - Fleur-de-Lys (bas-droite) */
+    rgba(217, 134, 28, 0.85),  /* jaune  - Lee Mao (bas-gauche) */
+    rgba(184, 29, 42, 0.85)    /* rouge again to close the loop */
+  );
+  filter: blur(70px);
+  opacity: 0.7;
+  animation: spin 40s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: #fff;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: bounce 1.8s infinite;
+}
+
+.scrollHint:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
 }
 
 .buttons {
@@ -83,4 +158,15 @@
 
 .supervision p {
   margin-bottom: 0.25rem;
+}
+
+.section {
+  padding: 4rem 0;
+  scroll-margin-top: var(--ifm-navbar-height);
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }

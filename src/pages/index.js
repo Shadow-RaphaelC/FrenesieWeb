@@ -7,70 +7,98 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const etapes = [
   {
-    titre: '1. Créer ou rejoindre une partie',
+    titre: '1. Explorer le Menu',
+    texte: `Les boutons "Informations" et "Crédits" vous donneront des informations supplémentaires sur le projet. Le bouton "Boutique" vous mène à la boutique d'améliorations et le bouton "Jouer" débute le jeu.`,
+    img: null,
+  },
+  {
+    titre: '2. Créer ou rejoindre une partie',
     texte: "L'hôte crée une partie et partage le code d'invitation à ses amis. Les autres joueurs entrent le code pour rejoindre le lobby.",
     img: null,
   },
   {
-    titre: '2. Choisir son personnage',
+    titre: '3. Choisir son nom',
+    texte: "Vous devez maintenant choisir votre nom. Un nom par défaut vous sera attribué si vous souhaitez rester anonyme.",
+    img: null,
+  },
+  {
+    titre: '4. Choisir son personnage',
     texte: 'Chaque joueur choisit parmi Umbris, Fleur-de-Lys, Lee Mao et Mélodieuzze. Chacun a son propre style : distance, mêlée, mobilité ou magie.',
     img: null,
   },
   {
-    titre: '3. Combattre',
-    texte: "Déplace-toi avec WASD, attaque avec le clic gauche et utilise tes deux capacités et ton ultime. Tes délais de récupération et tes points de vie sont affichés à l'écran.",
+    titre: '5. Combattre',
+    texte: "Déplace-toi avec WASD, attaque avec le clic gauche et utilise tes deux capacités (clic droit et la barre d'espace) et ton ultime (Touche E). Tes délais de récupération et tes points de vie sont affichés à l'écran.",
     img: null,
   },
   {
-    titre: '4. Combiner les effets',
+    titre: '6. Combiner les effets',
     texte: 'Certaines capacités appliquent des effets (Mouillé, Électrisé, Étourdi, Hémorragie...). Combiner deux effets sur une même cible déclenche une fusion encore plus puissante.',
     img: null,
   },
   {
-    titre: '5. Choisir une augmentation',
+    titre: '7. Choisir une augmentation',
     texte: "Entre les manches, les perdants choisissent une augmentation avec leur or pour devenir plus forts. Tu peux rafraîchir la sélection si aucune ne te plaît. Chaque personnage a aussi ses augmentations uniques.",
     img: null,
   },
   {
-    titre: '6. Remporter la partie',
+    titre: '8. Remporter la partie',
     texte: "Chaque élimination et chaque manche gagnée rapportent des points. Le premier à atteindre le total fixé par l'hôte gagne. Les gemmes gagnées servent ensuite à débloquer de nouvelles augmentations dans la boutique.",
     img: null,
   },
 ];
 
-// null = placeholder. Plus tard : '/video/presentation.mp4' (fichier dans static/video/)
+// Vidéo de fond du hero (courte, sans son). null = juste le dégradé.
+// Plus tard : '/video/hero.mp4'
+const heroVideo = null;
+
+// Vidéo de présentation (1 min, avec son). null = placeholder.
+// Plus tard : '/video/presentation.mp4'
 const video = null;
 
 const equipe = [
   {
     nom: 'Raphaël Couturier',
     role: "Chef d'équipe · Programmeur",
-    details: 'À remplir',
+    details: 'Responsable de la jouabilité des personnages, des augmentations, du site wiki et de la sauvegarde avec UnityCloud.',
     courriel: 'raphc.official.business@gmail.com',
+    github: 'Shadow-RaphaelC',
   },
   {
     nom: 'Vincent Lévesque',
     role: 'Programmeur',
-    details: 'À remplir',
-    courriel: 'EMAIL_VINCENT',
+    details: `Responsable du déroulement du jeu, des effets visuels (VFX) et de l'interface utilisateur.`,
+    courriel: 'levvin2@outlook.fr',
+    github: 'vincentLevesque2',
   },
   {
     nom: 'Mathis Teixeira',
     role: 'Programmeur',
-    details: 'À remplir',
-    courriel: 'EMAIL_MATHIS',
+    details: `Responsable de l'interface utilisateur, de la connexion entre les joueurs et du déroulement du jeu.`,
+    courriel: 'mathis.teixeira44@gmail.com',
+    github: '4EverMT',
   },
   {
     nom: 'Goufril Mardini',
     role: 'Programmeur',
-    details: 'À remplir',
-    courriel: 'EMAIL_GOUFRIL',
+    details: `Responsable de la conception des personnages, des augmentations et des menus d'optimisation.`,
+    courriel: 'goufril.mardini.dev@gmail.com',
+    github: 'goufff',
   },
   {
-    nom: 'NOM_ARTISTE',
-    role: 'Artiste',
-    details: 'À remplir',
-    courriel: 'EMAIL_ARTISTE',
+    nom: 'Julissa Ramos',
+    role: 'Artiste Visuel',
+    details: `Responsable de la conception des modèles de personnages et leur style visuel.`,
+  },
+  {
+    nom: 'Colin Woon',
+    role: 'Artiste Sonore',
+    details: 'Responsable de la création de la trame sonore pour la boucle de jeu principale.',
+  },
+  {
+    nom: 'Marc-Antoine Lambert',
+    role: 'Artiste Sonore',
+    details: 'Responsable de la création de la trame sonore pour la boutique du jeu.',
   },
 ];
 
@@ -97,7 +125,7 @@ function Etape({ titre, texte, img }) {
 
 function CommentJouer() {
   return (
-    <section className={clsx(styles.section, styles.alt)}>
+    <section id="comment-jouer" className={clsx(styles.section, styles.alt)}>
       <div className="container">
         <Heading as="h2">Comment jouer</Heading>
         <div className="row">
@@ -111,28 +139,43 @@ function CommentJouer() {
 }
 
 function Hero() {
+  const src = useBaseUrl(heroVideo ?? '');
   return (
-    <header className={clsx('hero hero--primary', styles.hero)}>
-      <div className="container">
+    <header className={clsx('hero', styles.hero)}>
+      {heroVideo && (
+        <video
+          className={styles.heroVideo}
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      )}
+      <div className={styles.heroOverlay} />
+      <div className={clsx('container', styles.heroContent)}>
         <Heading as="h1" className="hero__title">
           Frénésie
         </Heading>
         <p className="hero__subtitle">Party-fighter PvP multijoueur entre amis</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/wiki/personnages/fleurdelys">
+            className="button button--primary button--lg"
+            to="/wiki/personnages/umbris">
             Voir les personnages
           </Link>
         </div>
       </div>
+      <a href="#a-propos" className={styles.scrollHint} aria-label="Défiler vers le bas">
+        ▼
+      </a>
     </header>
   );
 }
 
 function APropos() {
   return (
-    <section className={styles.section}>
+    <section id="a-propos" className={styles.section}>
       <div className="container">
         <Heading as="h2">À propos du jeu</Heading>
         <p>
@@ -179,7 +222,7 @@ function Video() {
   );
 }
 
-function Membre({ nom, role, details, courriel }) {
+function Membre({ nom, role, details, courriel, github }) {
   return (
     <div className={clsx('col', styles.memberCol)}>
       <div className={clsx('card', styles.card)}>
@@ -188,9 +231,24 @@ function Membre({ nom, role, details, courriel }) {
           <p className={styles.role}>{role}</p>
           <p>{details}</p>
         </div>
-        <div className="card__footer">
-          <a href={`mailto:${courriel}`}>{courriel}</a>
-        </div>
+        {(courriel || github) && (
+          <div className={clsx('card__footer', styles.contacts)}>
+            {courriel && (
+              <a className="contact-link" href={`mailto:${courriel}`}>
+                {courriel}
+              </a>
+            )}
+            {github && (
+              <a
+                className="contact-link"
+                href={`https://github.com/${github}`}
+                target="_blank"
+                rel="noopener noreferrer">
+                {github}
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -198,7 +256,7 @@ function Membre({ nom, role, details, courriel }) {
 
 function Equipe() {
   return (
-    <section className={clsx(styles.section, styles.alt)}>
+    <section id="equipe" className={clsx(styles.section, styles.alt)}>
       <div className="container">
         <Heading as="h2">L'équipe</Heading>
         <div className="row">
