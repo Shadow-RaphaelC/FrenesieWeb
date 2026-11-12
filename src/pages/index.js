@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -9,52 +8,48 @@ const etapes = [
   {
     titre: '1. Explorer le Menu',
     texte: `Les boutons "Informations" et "Crédits" vous donneront des informations supplémentaires sur le projet. Le bouton "Boutique" vous mène à la boutique d'améliorations et le bouton "Jouer" débute le jeu.`,
-    img: null,
+    img: "img/Cards/MainMenu.png",
   },
   {
     titre: '2. Créer ou rejoindre une partie',
     texte: "L'hôte crée une partie et partage le code d'invitation à ses amis. Les autres joueurs entrent le code pour rejoindre le lobby.",
-    img: null,
+    img: "img/Cards/Host.png",
   },
   {
     titre: '3. Choisir son nom',
     texte: "Vous devez maintenant choisir votre nom. Un nom par défaut vous sera attribué si vous souhaitez rester anonyme.",
-    img: null,
+    img: "img/Cards/NameMenu.png",
   },
   {
     titre: '4. Choisir son personnage',
     texte: 'Chaque joueur choisit parmi Umbris, Fleur-de-Lys, Lee Mao et Mélodieuzze. Chacun a son propre style : distance, mêlée, mobilité ou magie.',
-    img: null,
+    img: "img/Cards/Selection.png",
   },
   {
     titre: '5. Combattre',
     texte: "Déplace-toi avec WASD, attaque avec le clic gauche et utilise tes deux capacités (clic droit et la barre d'espace) et ton ultime (Touche E). Tes délais de récupération et tes points de vie sont affichés à l'écran.",
-    img: null,
+    img: "img/Cards/Fighting.png",
   },
   {
     titre: '6. Combiner les effets',
     texte: 'Certaines capacités appliquent des effets (Mouillé, Électrisé, Étourdi, Hémorragie...). Combiner deux effets sur une même cible déclenche une fusion encore plus puissante.',
-    img: null,
+    img: "img/Cards/Effects.png",
   },
   {
     titre: '7. Choisir une augmentation',
     texte: "Entre les manches, les perdants choisissent une augmentation avec leur or pour devenir plus forts. Tu peux rafraîchir la sélection si aucune ne te plaît. Chaque personnage a aussi ses augmentations uniques.",
-    img: null,
+    img: "img/Cards/Augments.png",
   },
   {
     titre: '8. Remporter la partie',
     texte: "Chaque élimination et chaque manche gagnée rapportent des points. Le premier à atteindre le total fixé par l'hôte gagne. Les gemmes gagnées servent ensuite à débloquer de nouvelles augmentations dans la boutique.",
-    img: null,
+    img: "img/Cards/Stadium.png",
   },
 ];
 
-// Vidéo de fond du hero (courte, sans son). null = juste le dégradé.
-// Plus tard : '/video/hero.mp4'
-const heroVideo = null;
+const video = '/video/Frenesie_Demo_Complet.mp4';
 
-// Vidéo de présentation (1 min, avec son). null = placeholder.
-// Plus tard : '/video/presentation.mp4'
-const video = null;
+const heroVideo = null;
 
 const equipe = [
   {
@@ -158,13 +153,6 @@ function Hero() {
           Frénésie
         </Heading>
         <p className="hero__subtitle">Party-fighter PvP multijoueur entre amis</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--primary button--lg"
-            to="/wiki/personnages/umbris">
-            Voir les personnages
-          </Link>
-        </div>
       </div>
       <a href="#a-propos" className={styles.scrollHint} aria-label="Défiler vers le bas">
         ▼
